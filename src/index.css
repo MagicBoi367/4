@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "Plus Jakarta Sans", "Be Vietnam Pro", system-ui, sans-serif;
+  --font-sans: "Be Vietnam Pro", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --brand-navy: #061844;
+  --brand-electric: #0057ff;
+  --brand-cyan: #06b6d4;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes profile-tab-enter-left {
+  from {
+    opacity: 0;
+    transform: translateX(-14px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes profile-tab-enter-right {
+  from {
+    opacity: 0;
+    transform: translateX(14px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.animate-tab-from-left {
+  animation: profile-tab-enter-left 280ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-tab-from-right {
+  animation: profile-tab-enter-right 280ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes workspace-view-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-view-enter {
+  animation: workspace-view-enter 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  @page {
+    size: A4;
+    margin: 15mm 18mm;
+  }
+}
